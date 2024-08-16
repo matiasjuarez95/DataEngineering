@@ -48,7 +48,7 @@ FROM green_tripdata
 WHERE CAST(lpep_pickup_datetime as date) = '2019-09-18' 
 	    AND CAST(lpep_dropoff_datetime as date) = '2019-09-18';
 ```
-![Screenshot of the query]("C:\Users\maati\DataEngineering\Docker-Terraform\Docker\images\Query1.png")<br>
+![Screenshot of the query](https://github.com/matiasjuarez95/DataEngineering/blob/main/Docker-Terraform/Docker/images/Query1.png)<br>
 
 ## Question 4. Longest trip for each day
 Which was the pick up day with the longest trip distance? Use the pick up time for your calculations.<br>
@@ -61,7 +61,7 @@ FROM green_tripdata
 GROUP BY CAST(lpep_pickup_datetime as date)
 ORDER BY MAX(trip_distance) DESC;
 ```
-![Screenshot of the query]("C:\Users\maati\DataEngineering\Docker-Terraform\Docker\images\Query2.png")<br>
+![Screenshot of the query](https://github.com/matiasjuarez95/DataEngineering/blob/main/Docker-Terraform/Docker/images/Query2.png)<br>
 
 ## Question 5. Count records
 Consider lpep_pickup_datetime in '2019-09-18' and ignoring Borough has Unknown<br>
@@ -76,7 +76,7 @@ GROUP BY 1
 HAVING SUM(total_amount) > 5000
 ORDER BY SUM(total_amount) DESC;
 ```
-![Screenshot of the query]("C:\Users\maati\DataEngineering\Docker-Terraform\Docker\images\Query3.png")<br>
+![Screenshot of the query](https://github.com/matiasjuarez95/DataEngineering/blob/main/Docker-Terraform/Docker/images/Query3.png)<br>
 
 ## Question 6. Largest tip
 For the passengers picked up in September 2019 in the zone name Astoria which was the drop off zone that had the largest tip? We want the name of the zone, not the id.
@@ -92,4 +92,4 @@ WHERE CAST(lpep_pickup_datetime as date) BETWEEN '2019-09-01' AND '2019-09-30'
 GROUP BY 1,2
 ORDER BY MAX(g.tip_amount) DESC;
 ```
-![Screenshot of the query]("C:\Users\maati\DataEngineering\Docker-Terraform\Docker\images\Query4.png")<br>
+![Screenshot of the query](https://github.com/matiasjuarez95/DataEngineering/blob/main/Docker-Terraform/Docker/images/Query4.png)<br>
