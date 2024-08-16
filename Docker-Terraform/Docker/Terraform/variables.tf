@@ -1,6 +1,6 @@
 variable "credentials" {
-  description = "My Credentials"
-  default = "./keys/my-creds.json"
+  description = "Path to the GCP credentials JSON file"
+  default     = ""  # No default value for security reasons
 }
 
 variable "project" {
