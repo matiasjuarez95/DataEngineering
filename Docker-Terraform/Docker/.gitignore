@@ -1,0 +1,22 @@
+# Ignorar archivos de credenciales
+*.json
+
+# Ignorar archivos de configuración de Terraform
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+.terraform.lock.hcl
+
+# Ignorar archivos de logs
+*.log
+
+# Ignorar directorio de Python virtual environments
+venv/
+.env/
+
+# Ignorar carpetas de datos generadas
+ny_taxi_postgres_data/
+pgadmin_data/
+__pycache__/
+*.pyc
+ny_taxi_postgres_date/
