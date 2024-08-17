@@ -93,3 +93,141 @@ GROUP BY 1,2
 ORDER BY MAX(g.tip_amount) DESC;
 ```
 ![Screenshot of the query](https://github.com/matiasjuarez95/DataEngineering/blob/main/Docker-Terraform/Docker/images/Query4.png)<br>
+
+## Terraform Setup
+## Prerequisites
+Before you begin, ensure you have the following installed on your system:
+* Terraform: You can install Terraform by following the instructions on the official Terraform website.
+* Google Cloud SDK (gcloud): Required to interact with Google Cloud services.
+* Git: To clone the repository and manage version control.
+
+## Step 1: Clone the Repository
+Start by cloning the repository to your local machine or VM:
+´´´bash
+git clone https://github.com/yourusername/your-repository.git
+cd your-repository
+´´´
+## Step 2: Configure Google Cloud Credentials
+Ensure you have your Google Cloud credentials JSON file ready. This file is needed to authenticate Terraform with Google Cloud.
+
+* Create a service account in the Google Cloud Console with the necessary permissions.
+* Download the JSON key file for the service account.
+* Securely store the key file (e.g., my-creds.json).
+
+## Step 3: Set Up Environment Variables
+Set the path to your credentials file as an environment variable to avoid hardcoding it in your Terraform files:
+´´´bash
+export TF_VAR_credentials="/path/to/your/secure/location/my-creds.json"
+´´´
+## Step 4: Initialize Terraform
+Navigate to the Terraform directory in your project and initialize Terraform:
+´´´bash
+cd Terraform
+terraform init
+´´´
+This command downloads the necessary provider plugins and prepares the environment for use with Terraform.
+
+## Step 5: Review and Apply the Terraform Plan
+You can review what Terraform plans to create or modify by running:
+´´´bash
+terraform plan
+´´´
+If the plan looks good, apply it to create the resources:
+´´´bash
+terraform apply
+´´´
+## Step 6: Manage Your Infrastructure
+You can use Terraform to manage, update, or destroy your infrastructure as needed:
+
+* Update infrastructure: terraform apply
+* Destroy infrastructure: terraform destroy
+
+## Step 7: Clean Up
+After your work is complete, ensure to clean up resources to avoid unnecessary charges:
+´´´bash
+terraform destroy
+´´´
+
+## Example for terraform plan
+
+´´´terraform
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # google_bigquery_dataset.demo_dataset will be created
+  + resource "google_bigquery_dataset" "demo_dataset" {
+      + creation_time              = (known after apply)
+      + dataset_id                 = "Homework_1"
+      + default_collation          = (known after apply)
+      + delete_contents_on_destroy = false
+      + effective_labels           = (known after apply)
+      + etag                       = (known after apply)
+      + id                         = (known after apply)
+      + is_case_insensitive        = (known after apply)
+      + last_modified_time         = (known after apply)
+      + location                   = "US"
+      + max_time_travel_hours      = (known after apply)
+      + project                    = "big-silo-365814"
+      + self_link                  = (known after apply)
+      + storage_billing_model      = (known after apply)
+      + terraform_labels           = (known after apply)
+
+      + access (known after apply)
+    }
+
+  # google_storage_bucket.demo-bucket will be created
+  + resource "google_storage_bucket" "demo-bucket" {
+      + effective_labels            = (known after apply)
+      + force_destroy               = true
+      + id                          = (known after apply)
+      + location                    = "US"
+      + name                        = "homework-1-terra-bucket-matias"
+      + project                     = (known after apply)
+      + project_number              = (known after apply)
+      + public_access_prevention    = (known after apply)
+      + rpo                         = (known after apply)
+      + self_link                   = (known after apply)
+      + storage_class               = "STANDARD"
+      + terraform_labels            = (known after apply)
+      + uniform_bucket_level_access = (known after apply)
+      + url                         = (known after apply)
+
+      + lifecycle_rule {
+          + action {
+              + type          = "AbortIncompleteMultipartUpload"
+                # (1 unchanged attribute hidden)
+            }
+          + condition {
+              + age                    = 1
+              + matches_prefix         = []
+              + matches_storage_class  = []
+              + matches_suffix         = []
+              + with_state             = (known after apply)
+                # (3 unchanged attributes hidden)
+            }
+        }
+
+      + soft_delete_policy (known after apply)
+
+      + versioning (known after apply)
+
+      + website (known after apply)
+    }
+
+Plan: 2 to add, 0 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+google_bigquery_dataset.demo_dataset: Creating...
+google_storage_bucket.demo-bucket: Creating...
+google_storage_bucket.demo-bucket: Creation complete after 0s [id=homework-1-terra-bucket-matias]
+google_bigquery_dataset.demo_dataset: Creation complete after 1s [id=projects/big-silo-365814/datasets/Homework_1]
+
+Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
+´´´
