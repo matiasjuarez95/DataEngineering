@@ -103,10 +103,10 @@ Before you begin, ensure you have the following installed on your system:
 
 ## Step 1: Clone the Repository
 Start by cloning the repository to your local machine or VM:
-´´´bash
+```bash
 git clone https://github.com/yourusername/your-repository.git
 cd your-repository
-´´´
+```
 ## Step 2: Configure Google Cloud Credentials
 Ensure you have your Google Cloud credentials JSON file ready. This file is needed to authenticate Terraform with Google Cloud.
 
@@ -116,26 +116,26 @@ Ensure you have your Google Cloud credentials JSON file ready. This file is need
 
 ## Step 3: Set Up Environment Variables
 Set the path to your credentials file as an environment variable to avoid hardcoding it in your Terraform files:
-´´´bash
+```bash
 export TF_VAR_credentials="/path/to/your/secure/location/my-creds.json"
-´´´
+```
 ## Step 4: Initialize Terraform
 Navigate to the Terraform directory in your project and initialize Terraform:
-´´´bash
+```bash
 cd Terraform
 terraform init
-´´´
+```
 This command downloads the necessary provider plugins and prepares the environment for use with Terraform.
 
 ## Step 5: Review and Apply the Terraform Plan
 You can review what Terraform plans to create or modify by running:
-´´´bash
+```bash
 terraform plan
-´´´
+```
 If the plan looks good, apply it to create the resources:
-´´´bash
+```bash
 terraform apply
-´´´
+```
 ## Step 6: Manage Your Infrastructure
 You can use Terraform to manage, update, or destroy your infrastructure as needed:
 
@@ -144,13 +144,13 @@ You can use Terraform to manage, update, or destroy your infrastructure as neede
 
 ## Step 7: Clean Up
 After your work is complete, ensure to clean up resources to avoid unnecessary charges:
-´´´bash
+```bash
 terraform destroy
-´´´
+```
 
 ## Example for terraform plan
 
-´´´terraform
+```terraform
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
   + create
 
@@ -230,4 +230,4 @@ google_storage_bucket.demo-bucket: Creation complete after 0s [id=homework-1-ter
 google_bigquery_dataset.demo_dataset: Creation complete after 1s [id=projects/big-silo-365814/datasets/Homework_1]
 
 Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
-´´´
+```
